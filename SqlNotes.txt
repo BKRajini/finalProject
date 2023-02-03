@@ -1,0 +1,240 @@
+CREATE,SELECT,INSERT,ALTER,UPDATE,DELETE,DROP,WHERE,AND,OR,IN,NOT IN,DISTINCT,BETWEEN,
+ORDER BY.
+
+
+12th April 2022
+   1. Installation of Sql.
+
+13th April 2022
+   1.What is database:It is a collection of data or collection of Tables.
+   2.sql Statements:*DDL-Data Defination langauge-CREATE,DROP,ALTER,TRUNCATE,COMMIT,RENAME.
+                    *DML-Data Manipulation language-INSERT,UPDATE,DELETE,LOCK.
+                    *DCL-Data Control Language-GRANT,REVOKE.
+                    *TCL-Transaction Control Language-COMMIT,ROLLBACK,SAVEPOINT.
+
+14th April 2022
+   #Objects of the database includes:TABLES,FUNCTIONS,TRIGGERS,PROCEDURES.
+   #DataTypes->number:tinyint 1 byte,small int 2 bytes,int 4 bytes,bigint 8 bytes.
+              *string type:char,varchar(size).
+              *date:yyyy-mm-dd.
+   1.DDL:It is used to create and manage the structure of the database.
+#1)SYNTAX FOR CREATING THE DATABASE:
+   CREATE DATABASE DATABASE_NAME;
+
+#2)SYNTAX FOR CREATING THE TABLE:
+   CREATE TABLE table_name(column1 datatype,column2 datatype);
+
+#3)SYNTAX FOR RENAMEING THE TABLENAME :
+   RENAME TABLE old_table_name TO new_table_name;
+
+#4)SYNTAX FOR ADDING NEW COLUMN TO EXISTING COLUMN :
+   ALTER TABLE tablename ADD COLUMN column_name datatype(size);
+
+15th April 2022
+#5)SYNTAX FOR RENAMEING THE COLUMN NAME:
+   ALTER TABLE table_name RENAME COLUMN old_columnname TO new_columnname;
+
+#6)SYNTAX FOR CHANGING THE COLUMN DATATYPE:
+   ALTER TABLE table_name MODIFY column_name new_data_type;
+
+#7)SYNTAX FOR DROP THE COLUMN NAME:
+   ALTER TABLE TABLE_NAME DROP COLUMN COLUMN_NAME;
+                         
+18th April 2022
+
+DML:data manupulation langauge statements are used to create or manage the DATATYPE in the Table..
+    *INSERT,UPDATE,DELETE.
+
+1)SYNTAX FOR INSERTING DATA INTO TABLE.
+#1)INSERT INTO table_name VALUES(data1,data2,data3);
+#2)INSERT INTO table_name(column1,column2)VALUES(data1,data2);
+
+20th April 2022
+
+WHERE:It is used to filter the data from the table and used to specify the condition.
+#1)SELECT * FROM TABLE_NAME WHERE COLUMN_NAME=CONDITION;
+#2)SELECT COLUMN_NAME FROM TABLE_NAME WHERE CONDITION;
+
+COUNT:SELECT COUNT(COLUMN_NAME)FROM TABLE_NAME;
+
+21th April 2022
+
+AND:set of boolean operands will be true if all the operands are true,
+ Otherwise it will be false.
+
+OR:set of operands is true  if one or more of its operands is true, otherwise it will be false.
+
+AND:(.)                                 OR:(+)
+CONDITION CONDITION RESULT              CONDITION CONDITION  RESULT
+TRUE       FALSE    FALSE                TRUE      FALSE      TRUE
+FALSE      TRUE     FALSE                FALSE     TRUE       TRUE
+TRUE       TRUE     TRUE                 TRUE      TRUE       TRUE
+FALSE      FALSE    FALSE                FALSE     FALSE      FALSE
+
+syntax for both AND and OR AT A TIME:
+#1)SELECT COLUMN_NAME FROM TABLE_NAME WHERE(CONDITION AND CONDITION) OR CONDITION;
+#2)SELECT COLUMN_NAME FROM TABLE_NAME WHERE(CONDITION OR CONDITION) AND CONDITION;
+
+SYNTAX FOR UPDATEING THE DATA FROM A TABLE:
+#1)UPDATE TABLE_NAME SET COLUMN_NAME=NEW VALUE WHERE DIFFERENT_COLUMN_NAME=CONDITION;
+
+SYNTAX FOR DELETING THE DATA FROM A TABLE:
+#1)DELETE FROM TABLE_NAME WHERE COLUMN_NAME=VALUES;
+
+
+25th April 2022
+																																																																																																																																																																																																																																																																																																																														
+IN:To avoid multiple OR condition.
+#1)SELECT * FROM TABLE_NAME WHERE COLUMN_NAME IN(DATA);
+
+NOTIN:TO AVOID NOT REQUIRED DATA.
+#1)SELECT * FROM TABLE_NAME WHERE COLUMN_NAME NOT IN(DATA);
+
+`26TH April 2022
+
+DISTINCT:TO AVOID DUPLICATE VALUES TO GET UNIQUE VALUES.
+
+SYNTAX FOR DISTINCT:
+SELECT DISTINCT(COLUMN_NAME) FROM TABLE_NAME;
+
+
+BETWEEN : it is used to select the values within a given range.
+SYNTAX FOR BETWEEN:
+SELECT * FROM TABLE_NAME WHERE COLUMN_NAME BETWEEN VALUE1 AND VALUE2;
+
+
+27th April 2022
+
+ORDER BY:It arranges the data or sort the data in asending by default and descending order by desc keyword.
+
+SYNTAX FOR ORDERBY:
+
+#1)SELECT * FROM TABLE_NAME ORDER BY COLUMN_NAME;
+#2)SELECT COLUMN_NAME FROM TABLE_NAME WHERE COLUMN_NAME BETWEEN CONDITION AND CONDITION ORDERBY COLUMN_NAME;
+
+28th April 2022
+
+Aggregate functions:It is used to perform the calculation on set of values and return singal value. 
+                    COUNT,SUM,MAX,MIN,AVG
+
+syntax of COUNT:
+#1)SELECT COUNT(COLUMN_NAME) (THIS IS OPTIONAL: AS ALIAS_NAME) FROM TABLE_NAME;
+
+syntax of SUM:
+#1)SELECT SUM(COLUMN_NAME) FROM TABLE_NAME;
+
+syntax of max:
+#1)SELECT MAX(COLUMN_NAME) FROM TABLE_NAME;
+
+syntax of min:
+#1)SELECT MIN(COLUMN_NAME) FROM TABLE_NAME;
+
+syntax of avg:
+#1)SELECT AVG(COLUMN_NAME) FROM TABLE_NAME;
+
+
+syntax of duplicating the table:
+#1)CREATE TABLE NEW_TABLE_NAME AS SELECT * FROM OLD_TABLE_NAME; 
+
+3rd May 2022
+
+GROUP BY:It is used to GROUP THE ROWS WHICH ARE HAVING THE SAME VALUES.
+KEY POINTS->
+1)GROUP BY is always used in SELECT.
+2)GROUP BY should be written after WHERE and before ORDER BY.
+
+syntax for GROUP BY:
+#1)SELECT COLUMN_NAME FROM TABLE_NAME GROUP BY COLUMN_NAME;
+
+
+LIKE:It is use dfor pattern matching.
+1)%:It is used to match any string of any length.
+2)_:It is used to match single character.
+
+#1)syntax for like:SELECT COLUMN_NAME FROM TABLE_NAME WHERE COLUMN_NAME LIKE 'A%'; 
+
+4th May 2022
+
+Having clause:It is used to filter the data based on group by result.
+
+Syntax for Having clause:
+
+#1)SELECT SUM(COLUMN_NAME),COLUMN_NAME FROM TABLE_NAME GROUP BY COLUMN_NAME HAVING SUM(COLUMN_NAME) > VALUE;
+#2)SELECT SUM(COLUMN_NAME),COLUMN_NAME FROM TABLE_NAME GROUP BY COLUMN_NAME HAVING SUM(COLUMN_NAME) > VALUE AND SUM(COLUMN_NAME) < VALUE;
+
+
+5th May 2022
+CONSTRAINTS:thet are used to set some rules for data while inserting into table.
+1)Not Null:column should not contain null values,it can have duplicate values.
+2)unique:column should not contain duplicate values,it can have null values.
+3)check:it will check for column condition.
+4)primary key:It uniquely identifies each row in a table.(parent) AND IT SHOULD CONTAIN UNIQUE VALUES AND NOT CONTAIN NULL 
+VALUES.
+5)foreign key:It always refers the primary key of the other table,it is used to link the data between two tables.(child).
+
+
+primary key syntax:
+ CREATE TABLE TABLE_NAME(COLUMN_NAME1,COLUMN_NAM2,PRIMARY_KEY(COLUMN1,COLUMN2));
+EXAMPLE: CREATE TABLE HOSPITAL(INT ID NOT NULL UNIQUE,LOCATION VARCHAR(90),PRIMARY KEY(ID));
+
+9th May 2022
+
+JOINS:Combining the two or more tables based on condition specified by the columns.
+OR
+it is combining the rows between two or more tables based on the related columns between them.
+
+Types of joins:
+1)Inner Join:Creates new Rows by combining the column values from two or more tables.
+
+#1)Syntax for Inner join:
+  SELECT TABLE_NAME.COLUMN_NAME FROM TABLE1 INNER JOIN TABLE2 ON TABLE1.COLUMN_NAME = TABLE2.COLUMN_NAME;
+
+2)Right join:Right join returns the row from right table and those matching recods from left table.
+#1)SELECT TABLE_NAME.COLUMN_NAME FROM TABLE1 RIGHT JOIN TABLE2 ON TABLE1.COLUMN_NAME = TABLE2.COLUMN_NAME;
+
+
+3)Left join:Left join returns the row from left table and those matching recods from right table.
+#1)SELECT TABLE_NAME.COLUMN_NAME FROM TABLE1 LEFT JOIN TABLE2 ON TABLE1.COLUMN_NAME = TABLE2.COLUMN_NAME;
+
+
+4)Cross join:It is used to combine each row of the first table with the each row of the second table.
+#1)SELECT COLUMN_NAME(S) FROM TABLE_NAME1 CROSS JOIN TABLE_NAME2;
+
+
+
+24th May 2022
+
+Character functions:
+1)instr:It will return the integer value for a particular position of the character.
+Sytax for instr:
+SELECT INSTR('CHARACTERSTRING','POSITION OG ONE CHARACTER')AS POSITION;
+
+2)substr:It will return the substring of the string.
+Sytax for substr:
+SELECT substr('CHARACTERSTRING',STARTING POSITION,NO OF CHARACTERS)AS POSITION;
+
+SET OPERATORS:
+Union:union operator combines the result set of two or more select statements and avoid the duplicate values.
+RULES:It must contain the same number of columns of any two tables and same sequence of the data types in both the tables. 
+sytax for union:#1)SELECT * FROM TABLE_NAME1 UNION SELECT * FROM TABLE_NAME2;
+                #2)SELECT * FROM TABLE_NAME  UNION ALL SELECT * FROM TABLE_NAME2;
+
+25th May 2022
+
+SUBQUERY:It will hava quary in a quary.
+*Subquery can be used in SELECT,UPDATE,DELETE STATEMENTS.
+*It can also use expression operators =,<,<=,>=.
+*It will have inner query and outer query.
+*outer query will always be main query,inner query will be sub query.
+*subquery should always written in paranthesis.
+
+create subquary syntax:
+
+update subquary syntax:
+
+
+
+26th May 2022
+
+delete subquary syntax:
+DELETE FROM TABLE_NAME WHERE COLUMN_NAME IN(SELECT COLUMN_NAME FROM COLUMN_NAME WHERE COLUMN_NAME = "VALUE"
