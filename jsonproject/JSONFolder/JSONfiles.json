@@ -1,0 +1,16 @@
+{
+"firstName":"Rajini",
+"lastName":"BK",
+"address":[
+{
+"StreetName":"Jaynagar",
+"HouseNo":"134",
+"State":"Karnataka"
+},
+{
+"StreetName":"WilsonGarden",
+"HouseNo":"444",
+"State":"AndraPradesh"
+}
+]
+}
